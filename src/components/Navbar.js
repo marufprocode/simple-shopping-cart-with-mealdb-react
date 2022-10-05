@@ -9,7 +9,7 @@ const Navbar = () => {
     setTheme(!theme);
     theme ?  document.children[0].setAttribute('data-theme', 'cupcake'):
     document.children[0].setAttribute('data-theme', 'dark');
-  }
+  };
   return (
     <div>
       <div className="navbar bg-base-100 px-3 md:px-10 shadow-lg">

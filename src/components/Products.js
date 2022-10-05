@@ -1,6 +1,6 @@
 import React from "react";
 
-const Products = ({ product }) => {
+const Products = ({ product, handleAddCart }) => {
   const {
     price,
     strCategory: category,
@@ -18,7 +18,7 @@ const Products = ({ product }) => {
           <p>{description.slice(0, 50)}...</p>
           <h4 className="text-[1.25rem] font-semibold text-orange-500">Price: {price}</h4>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary" onClick={()=> handleAddCart(product)}>Buy Now</button>
           </div>
         </div>
       </div>
