@@ -1,8 +1,15 @@
-import React from "react";
 import { Link, } from "react-router-dom";
 import Links from "./Links";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState(false);
+
+  const handleTheme = () => {
+    setTheme(!theme);
+    theme ?  document.children[0].setAttribute('data-theme', 'cupcake'):
+    document.children[0].setAttribute('data-theme', 'dark');
+  }
   return (
     <div>
       <div className="navbar bg-base-100 px-3 md:px-10 shadow-lg">
@@ -67,7 +74,7 @@ const Navbar = () => {
                   <span className="badge">
                     <label className="swap swap-rotate">
                       {/* <!-- this hidden checkbox controls the state --> */}
-                      <input type="checkbox" />
+                      <input type="checkbox" onChange={handleTheme}/>
 
                       {/* <!-- sun icon --> */}
                       <svg

@@ -13,16 +13,20 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home/>
             },
-            {
+            /* {
                 path: '/cart',
                 element: <Cart/>
-            },
+            }, */
             {
-                path:'/:food',
+                path:'/products/:food',
                 loader: async ({params}) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.food}`),
                 element: <FoundFood/>
             }
         ]
+    },
+    {
+        path: '/cart',
+        element: <Cart/>
     },
     {
         path: '*', 

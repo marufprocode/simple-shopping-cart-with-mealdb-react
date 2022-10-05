@@ -2,6 +2,7 @@ import React from "react";
 
 const Products = ({ product }) => {
   const {
+    price,
     strCategory: category,
     strCategoryThumb: img,
     strCategoryDescription: description,
@@ -15,6 +16,7 @@ const Products = ({ product }) => {
         <div className="card-body bg-base-200">
           <h2 className="card-title">{category}</h2>
           <p>{description.slice(0, 50)}...</p>
+          <h4 className="text-[1.25rem] font-semibold text-orange-500">Price: {price}</h4>
           <div className="card-actions justify-end">
             <button className="btn btn-primary">Buy Now</button>
           </div>
