@@ -1,6 +1,6 @@
 import React from "react";
 
-const Foods = ({ foods }) => {
+const Foods = ({ foods, handleAddCart }) => {
   const { strMeal, strMealThumb, price } = foods;
   return (
     <div>
@@ -13,7 +13,7 @@ const Foods = ({ foods }) => {
           <p>Lorem ipsum dolor sit nisi?...</p>
           <p className="text-[1.25rem] font-semibold text-orange-500">Price: ${price}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary" onClick={()=> handleAddCart(foods)}>Buy Now</button>
           </div>
         </div>
       </div>
