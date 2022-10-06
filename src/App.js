@@ -4,7 +4,7 @@ import router from "./router/routes";
 function App() {
   return (
     <div>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} fallbackElement={<div>Ami Load Hocchi....</div>}/>
     </div>
   );
 }

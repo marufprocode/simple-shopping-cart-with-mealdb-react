@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import Shop from './Shop';
 
 const Home = () => {
-    const handleAddCart = useOutletContext();
+    const [handleAddCart] = useOutletContext();
     return (
         <div>
             <Shop handleAddCart={handleAddCart}/>

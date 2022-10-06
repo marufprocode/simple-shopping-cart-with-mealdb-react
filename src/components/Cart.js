@@ -1,10 +1,23 @@
 import React from "react";
-import Navbar from "./Navbar";
+import { useOutletContext } from "react-router-dom";
+import CartItemList from "./CartItemList";
+// import Navbar from "./Navbar";
 
 const Cart = () => {
+  const [, cartItems, handleRemoveItem] =  useOutletContext();
+  let subTotal = 0;
+  if (cartItems) cartItems.forEach(item => {
+    subTotal = subTotal+item.eachTotal;
+  });
+  if(!cartItems) {
+    return (
+      <div className="text-center text-3xl text-red-500 py-12 font-semibold">
+        No Cart Items Found, Add some foods to your cart 
+      </div>
+    )
+  }
   return (
     <div>
-      <Navbar />
       <div className="overflow-x-auto my-10 px-10">
         <table className="table w-full">
           {/* <!-- head --> */}
@@ -18,30 +31,9 @@ const Cart = () => {
           </thead>
           <tbody>
             {/* <!-- row 1 , This Table Row Will Create Dinamically--> */}
-            <tr>
-              <th>1</th>
-              <td className="flex">
-                <img
-                  src="https://images.unsplash.com/photo-1603064752734-4c48eff53d05?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                  alt="product-img"
-                  width={"50px"}
-                  height={"60px"}
-                />
-                <div className="des ml-2">
-                  <p>Burger</p>
-                  <p>$50</p>
-                  <p className="text-red-600">remove</p>
-                </div>
-              </td>
-              <td>
-                <div className="flex items-center">
-                  <button className="btn btn-xs text-white">+</button>
-                  <p className="px-2 mx-1 font-semibold border">1</p>
-                  <button className="btn btn-xs text-white">-</button>
-                </div>
-              </td>
-              <td>$50</td>
-            </tr>
+            { cartItems &&
+              cartItems.map((item, index) => <CartItemList key={index} index={index} item={item} handleRemoveItem={handleRemoveItem}/>)
+            }
           </tbody>
           <tfoot>
             <tr>
@@ -53,9 +45,9 @@ const Cart = () => {
                     <p className="py-1">Total</p>
                 </th>
                 <th>
-                    <p className="py-1">$50</p>
-                    <p className="py-1">$5</p>
-                    <p className="py-1">$55</p>
+                    <p className="py-1">$ <span>{subTotal}</span></p>
+                    <p className="py-1">$ <span>{subTotal>0? 5:0}</span></p>
+                    <p className="py-1">$ {subTotal>0? subTotal+5:0}</p>
                 </th>
             </tr>
           </tfoot>

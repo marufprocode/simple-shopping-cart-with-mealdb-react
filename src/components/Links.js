@@ -1,13 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Links = () => {
+const NavLinks = () => {
     return (
         <ul>
-            <Link to='/'><li>Home</li></Link>
-            <Link to='/about'><li>About</li></Link>
+            <NavLink to='/home' className={({ isActive }) =>
+              isActive ? 'bg-base-300 mx-1 px-5 py-2 rounded-lg' : 'bg-base-100 mx-1 px-5 py-2 rounded-lg'
+            }
+            ><li>Home</li></NavLink>
+            <NavLink to='/about' className={({ isActive }) =>
+              isActive ? 'bg-base-300 mx-1 px-5 py-2 rounded-lg' : 'mx-1 bg-base-100 px-5 py-2 rounded-lg'
+            }><li>About</li></NavLink>
         </ul>
     );
 };
 
-export default Links;
+export default NavLinks;

@@ -2,8 +2,16 @@ import { Link, } from "react-router-dom";
 import Links from "./Links";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({cartItems, handleClearCart}) => {
   const [theme, setTheme] = useState(false);
+
+  let totalQuantity = 0;
+  let subTotal = 0;
+  if (cartItems) cartItems.forEach(item => {
+    totalQuantity = totalQuantity+item.quantity;
+    subTotal = subTotal+item.eachTotal;
+  });
+  
 
   const handleTheme = () => {
     setTheme(!theme);
@@ -23,7 +31,7 @@ const Navbar = () => {
         <Links/>
         <div className="flex-none">
             
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end mr-3">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
@@ -40,20 +48,21 @@ const Navbar = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">8</span>
+                <span className="badge badge-sm indicator-item">{totalQuantity}</span>
               </div>
             </label>
             <div
               tabIndex={0}
-              className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
+              className="mt-3 card card-compact dropdown-content w-56 bg-base-100 shadow"
             >
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
-                <div className="card-actions">
-                  <Link to='/cart'><button className="btn btn-primary btn-block">
+                <p className="font-bold text-lg"><span>{totalQuantity}</span> Items</p>
+                <p className="text-info">Subtotal: $<span>{subTotal}</span></p>
+                <div className="card-actions flex flex-row">
+                  <Link to='/cart'><button className="btn btn-primary btn-sm">
                     View cart
                   </button></Link>
+                  <Link><button className="btn btn-sm btn-error hover:bg-red-500" onClick={handleClearCart}>Clear Cart</button></Link>
                 </div>
               </div>
             </div>

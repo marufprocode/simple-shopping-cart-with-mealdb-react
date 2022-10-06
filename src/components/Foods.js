@@ -4,9 +4,9 @@ const Foods = ({ foods, handleAddCart }) => {
   const { strMeal, strMealThumb, price } = foods;
   return (
     <div>
-      <div className="card w-full bg-base-100 shadow-xl">
+      <div className="card max-w-[350px] h-[450px] bg-base-100 shadow-xl">
         <figure>
-          <img src={strMealThumb} alt="products" className="" />
+          <img src={strMealThumb} alt="products" className="h-[200px] w-[350px]" />
         </figure>
         <div className="card-body bg-base-200">
           <h2 className="card-title">{strMeal}</h2>

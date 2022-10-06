@@ -13,10 +13,14 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home/>
             },
-            /* {
+            {
+                path: '/home',
+                element: <Home/>
+            },
+            {
                 path: '/cart',
                 element: <Cart/>
-            }, */
+            },
             {
                 path:'/products/:food',
                 loader: async ({params}) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.food}`),
@@ -24,10 +28,10 @@ const router = createBrowserRouter([
             }
         ]
     },
-    {
+/*     {
         path: '/cart',
         element: <Cart/>
-    },
+    }, */
     {
         path: '*', 
         element: <div className="text-3xl font-bold text-center mt-12 text-red-600">Page Not Found</div> 

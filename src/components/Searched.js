@@ -5,7 +5,7 @@ const Searched = () => {
     const [value, setValue] = useState('');
     let navigate = useNavigate();
     const handleChange = (value) => {
-        navigate(`products/${value}`)
+        navigate(`../products/${value}`)
     }
     return (
         <div className="form-control mr-0 md:mr-3 mb-3 md:mb-0">
