@@ -8,7 +8,7 @@ const Products = ({ product }) => {
     strCategoryDescription: description,
   } = product;
   return (
-    <Link to ={`/products/${category}`}>
+    <Link to ={`/products/${category}`} data-aos="zoom-in">
       <div className="card w-full bg-base-100 shadow-xl image-full">
         <figure>
           <img src={img} alt="Shoes" />

@@ -3,7 +3,7 @@ import React from "react";
 const Foods = ({ foods, handleAddCart }) => {
   const { strMeal, strMealThumb, price } = foods;
   return (
-    <div>
+    <div data-aos="fade-up">
       <div className="card max-w-[350px] h-[450px] bg-base-100 shadow-xl">
         <figure>
           <img src={strMealThumb} alt="products" className="h-[200px] w-[350px]" />

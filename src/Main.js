@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 // import SearchFood from './components/SearchFood';
 
 const Main = () => {
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, []);
     const [cartItems, setCartItems] = useState(null);
     const handleAddCart = (items) => {
         let addedItems = [];

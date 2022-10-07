@@ -12,7 +12,7 @@ const FoundFood = () => {
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
-    }, 800);
+    }, 500);
   }, []);
   const foods = useLoaderData();
   const foundFoods = foods.meals;
