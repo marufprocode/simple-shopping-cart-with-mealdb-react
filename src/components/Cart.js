@@ -10,7 +10,7 @@ const Cart = () => {
   if (cartItems) cartItems.forEach(item => {
     subTotal = subTotal+item.eachTotal;
   });
-  if(!cartItems) {
+  if(!cartItems || cartItems.length === 0) {
     return (
       <div className="text-center text-2xl md:text-3xl text-red-500 px-5 lg:px-10 py-12 font-semibold min-h-screen">
         No Cart Items Found, Add some foods to your cart 
