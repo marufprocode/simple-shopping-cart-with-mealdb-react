@@ -1,5 +1,6 @@
-import { Link, } from "react-router-dom";
-import Links from "./Links";
+import { Link, NavLink, } from "react-router-dom";
+// import Links from "./Links";
+import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { useState } from "react";
 
 const Navbar = ({cartItems, handleClearCart}) => {
@@ -20,15 +21,23 @@ const Navbar = ({cartItems, handleClearCart}) => {
   };
   return (
     <div>
-      <div className="navbar bg-base-100 px-3 md:px-10 shadow-lg">
+      <div className="navbar bg-base-100 px-3 md:px-10 shadow-lg w-[100%]">
         <div className="flex-1">
-          <img src={require("../images/logo.png")} alt="" width={"50px"} />
-          <a href="/daisyui" className="btn btn-ghost normal-case text-xl">
+          <img src={require("../images/logo.png")} alt="" className="w-[35px] md:w-[50px]" />
+          <Link to='/' className="btn btn-ghost normal-case text-lg md:text-xl">
             HotFood
-          </a>
+          </Link>
         </div>
         
-        <Links/>
+        <ul className="hidden sm:flex">
+            <NavLink to='/home' className={({ isActive }) =>
+              isActive ? 'bg-base-300 mx-1 px-5 py-2 rounded-lg' : 'bg-base-100 mx-1 px-5 py-2 rounded-lg'
+            }
+            ><li>Home</li></NavLink>
+            <NavLink to='/about' className={({ isActive }) =>
+              isActive ? 'bg-base-300 mx-1 px-5 py-2 rounded-lg' : 'mx-1 bg-base-100 px-5 py-2 rounded-lg'
+            }><li>About</li></NavLink>
+        </ul>
         <div className="flex-none">
             
           <div className="dropdown dropdown-end mr-3">
@@ -69,8 +78,8 @@ const Navbar = ({cartItems, handleClearCart}) => {
           </div>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://placeimg.com/80/80/people" alt="img" />
+              <div className="rounded-full">
+                <UserCircleIcon className="h-10 w-10 text-red-900"/>
               </div>
             </label>
             <ul
