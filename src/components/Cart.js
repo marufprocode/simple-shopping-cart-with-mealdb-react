@@ -11,7 +11,7 @@ const Cart = () => {
   });
   if(!cartItems) {
     return (
-      <div className="text-center text-3xl text-red-500 py-12 font-semibold">
+      <div className="text-center text-3xl text-red-500 py-12 font-semibold min-h-screen">
         No Cart Items Found, Add some foods to your cart 
       </div>
     )

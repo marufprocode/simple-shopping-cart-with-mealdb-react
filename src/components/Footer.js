@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="text-center bg-base-300 max-h-56">
-        <div className="container px-6 pt-6">
+      <footer className="text-center bg-base-300 w-[100%]">
+        <div className="px-6 pt-6">
           <div className="flex justify-center mb-6">
             <a
               href="#!"

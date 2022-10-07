@@ -9,7 +9,7 @@ const Products = ({ product }) => {
   } = product;
   return (
     <Link to ={`/products/${category}`}>
-      <div className="card w-96 bg-base-100 shadow-xl image-full">
+      <div className="card w-full bg-base-100 shadow-xl image-full">
         <figure>
           <img src={img} alt="Shoes" />
         </figure>
