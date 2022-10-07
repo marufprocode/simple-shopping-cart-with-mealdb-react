@@ -4,8 +4,14 @@ import { ProgressBar } from "react-loader-spinner";
 import { useLoaderData, useOutletContext } from "react-router-dom";
 import Foods from "./Foods";
 import SearchFood from "./SearchFood";
+import { useLocation } from "react-router";
 
 const FoundFood = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  
   const [loader, setLoader] = useState(false);
   const [handleAddCart] = useOutletContext();
   useEffect(() => {
