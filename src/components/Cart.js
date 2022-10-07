@@ -5,7 +5,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/solid'
 // import Navbar from "./Navbar";
 
 const Cart = () => {
-  const [, cartItems, handleRemoveItem] =  useOutletContext();
+  const [, cartItems, handleRemoveItem, handleQuantityUpdate] =  useOutletContext();
   let subTotal = 0;
   if (cartItems) cartItems.forEach(item => {
     subTotal = subTotal+item.eachTotal;
@@ -33,7 +33,7 @@ const Cart = () => {
           <tbody>
             {/* <!-- row 1 , This Table Row Will Create Dinamically--> */}
             { cartItems &&
-              cartItems.map((item, index) => <CartItemList key={index} index={index} item={item} handleRemoveItem={handleRemoveItem}/>)
+              cartItems.map((item, index) => <CartItemList key={index} index={index} item={item} handleRemoveItem={handleRemoveItem} handleQuantityUpdate={handleQuantityUpdate}/>)
             }
           </tbody>
           <tfoot>
@@ -53,7 +53,7 @@ const Cart = () => {
             </tr>
           </tfoot>
         </table>
-        <div className="flex justify-end mt-3"><button className="btn btn-sm btn-info mr-5 md:mr-12">Proceed to Checkout <ArrowRightIcon className="h-5 w-5 text-black"/></button></div>
+        <div className="flex justify-end mt-3"><button className="btn btn-sm btn-info mr-5 md:mr-12 hover:bg-sky-500">Proceed to Checkout <ArrowRightIcon className="h-5 w-5 text-black"/></button></div>
       </div>
     </div>
   );

@@ -45,6 +45,24 @@ const Main = () => {
         setCartItems(null);
     }
 
+    const handleQuantityUpdate = (item, isPlus) => {
+        let tempCart = [];
+        const matchedItem = cartItems.find(cartItem => item.idMeal === cartItem.idMeal);
+        // const restItem = cartItems.filter(cartItem => item.idMeal !== cartItem.idMeal);
+        if (isPlus){
+            matchedItem.quantity = matchedItem.quantity+1;
+            matchedItem.eachTotal = matchedItem.quantity*matchedItem.price;
+        } else{
+            if(matchedItem.quantity>=2){
+                matchedItem.quantity = matchedItem.quantity-1;
+                matchedItem.eachTotal = matchedItem.quantity*matchedItem.price;
+            }
+        };
+        tempCart = [...cartItems];
+        setCartItems(tempCart);
+        localStorage.setItem("cart-items", JSON.stringify(tempCart)); 
+    }
+
     const handleRemoveItem = (i) => {
         // const storedCart = JSON.parse(localStorage.getItem('cart-items'));
         const filteredCart= cartItems.filter(item => item.idCategory !== i.idCategory || item.idMeal !== i.idMeal);
@@ -55,7 +73,7 @@ const Main = () => {
     return (
         <div>
             <Navbar cartItems={cartItems} handleClearCart={handleClearCart}/>
-            <Outlet context={[handleAddCart, cartItems, handleRemoveItem]}/>
+            <Outlet context={[handleAddCart, cartItems, handleRemoveItem, handleQuantityUpdate]}/>
             <Footer/>
         </div>
     );
