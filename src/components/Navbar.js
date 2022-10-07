@@ -20,8 +20,8 @@ const Navbar = ({cartItems, handleClearCart}) => {
     document.children[0].setAttribute('data-theme', 'dark');
   };
   return (
-    <div>
-      <div className="navbar bg-base-100 px-3 md:px-10 shadow-lg w-[100%]">
+    <div className="w-[100%] mb-20 md:mb-24">
+      <div className="navbar bg-base-100 px-3 md:px-10 shadow-lg w-[100%] fixed top-0 z-50">
         <div className="flex-1">
           <img src={require("../images/logo.png")} alt="" className="w-[35px] md:w-[50px]" />
           <Link to='/' className="btn btn-ghost normal-case text-lg md:text-xl">
